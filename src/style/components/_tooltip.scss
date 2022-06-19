@@ -1,0 +1,42 @@
+@import './../lib/vars';
+.tooltip {
+  height: 0;
+  section {
+    transform: translateY(-27px);
+    position: relative;
+    margin-bottom: 1vw;
+    width: 100%;
+    p {
+      background: #fff;
+      color: $color-primary;
+      font-weight: 700;
+      display: inline-block;
+      padding: 0.5vw;
+      width: auto;
+      border: 2px solid $color-primary;
+      border-radius: 4px;
+      margin-left: 10px;
+    }
+    .caret-up {
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      color: $color-primary;
+      height: 15px;
+    }
+  }
+}
+
+.leagues-container {
+  .hideLarge .tooltip section {
+    transform: translateY(-30px);
+    margin-left: 26px;
+  }
+  .hideMedium .tooltip section {
+    transform: translateY(-30px);
+    margin-left: 10px;
+  }
+  .all-private-form input {
+    margin-bottom: 30px;
+  }
+}

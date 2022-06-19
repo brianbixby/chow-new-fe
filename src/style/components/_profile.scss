@@ -1,0 +1,170 @@
+.profile-form {
+  width: 96%;
+  margin: 0 auto;
+  label {
+    width: 100%;
+    margin: 0.8rem auto 1.5%;
+    font-weight: 300;
+    cursor: default;
+    font-size: 17px;
+    display: block;
+  }
+  input {
+    flex: 2;
+    -webkit-flex: 2;
+    padding-bottom: 0.4rem;
+    padding-top: 0.5rem;
+    border-radius: 0;
+    color: #4d4d4d;
+    height: 50px;
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    clear: both;
+    position: relative;
+    width: 100%;
+    padding-left: 0.5rem;
+    font-size: 16px;
+    color: #4d4d4d;
+  }
+  button {
+    color: #fff;
+    font-size: 16px;
+    line-height: 50px;
+    right: calc((3% + 4px));
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: #feaa26;
+    height: 50px;
+    width: 155px;
+    text-align: center;
+    z-index: 1;
+    border: none;
+    margin-top: 0.8rem;
+  }
+  button:hover {
+    background: #ed9702;
+  }
+}
+
+.page-form {
+  width: 96%;
+  margin: 15px auto 10px;
+}
+
+.profileWrapper {
+  width: 96%;
+  margin: 0 auto;
+  max-width: 225px;
+}
+
+.mainContainerHeader {
+  font-size: 17px;
+  font-size: 1.0625rem;
+  margin-bottom: 1rem;
+  color: #2d2d2d;
+  margin: 0.8rem 0 1.5%;
+  text-transform: capitalize;
+}
+
+.profileDate {
+  color: #999;
+  font-size: 16px;
+}
+
+.favoritesHeader {
+  border-bottom: 1px solid #e6e6e6;
+  clear: both;
+  color: #4d4d4d;
+  font-weight: 300;
+  margin-top: 1rem;
+  margin-bottom: 10px;
+  min-height: 58px;
+  padding: 0.8rem 1% 0.7rem;
+  font-size: 1.75rem;
+  width: 92.16%;
+  margin: auto;
+}
+
+.noFavorites {
+  padding: 0.8rem 1% 0.7rem;
+  width: 92.16%;
+  margin: 0 auto 10px;
+}
+
+.viewProfile {
+  width: 96%;
+  margin: 0 auto;
+  p {
+    margin: 0.8rem auto 1.5%;
+    font-weight: 300;
+    font-size: 17px;
+    span {
+      padding-bottom: 0.4rem;
+      padding-top: 0.5rem;
+      height: 50px;
+      padding-left: 0.5rem;
+      font-size: 16px;
+      color: #4d4d4d;
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      line-height: 16px;
+      height: 43px;
+    }
+  }
+  .editProfileButton {
+    color: #fff;
+    font-size: 16px;
+    line-height: 50px;
+    right: calc((3% + 4px));
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: #feaa26;
+    height: 50px;
+    width: 155px;
+    text-align: center;
+    z-index: 1;
+    border: none;
+    margin-top: 0.8rem;
+    cursor: pointer;
+    margin: 0;
+  }
+  .editProfileButton:hover {
+    background: #ed9702;
+  }
+}
+
+.profile-container .recipesSection {
+  margin-top: 20px;
+}
+
+.profile-image {
+  width: 100%;
+  height: auto;
+}
+
+.finishProfile {
+  margin: 10px auto 25px;
+  p {
+    color: #ff7e1a;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .finishProfile {
+    width: 96%;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .page-form {
+    width: 49%;
+    display: inline-block;
+  }
+}

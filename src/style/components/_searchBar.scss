@@ -1,0 +1,428 @@
+.searchContainer {
+  position: absolute;
+  top: 12px;
+  left: 275px;
+  width: calc((100vw - 545px));
+  z-index: 1;
+  .input-group {
+    height: 50px;
+    line-height: 50px;
+    border: 1px solid #e6e6e6;
+    background-color: #fff;
+    .search-form {
+      width: 68.5%;
+      height: 100%;
+      font-size: 18px;
+      font-weight: normal;
+      padding-left: 15px;
+      color: #000;
+      vertical-align: top;
+      border: none !important;
+    }
+    .advancedSearchButton {
+      background-color: #f2f2f2;
+      color: #4d4d4d;
+      width: 138px;
+      text-align: center;
+      height: 42px;
+      font-size: 14px;
+      position: absolute;
+      top: 4px;
+      right: 60px;
+      cursor: pointer !important;
+      line-height: 44px;
+    }
+    .advancedSearchButton:hover {
+      background-color: #ebebeb;
+    }
+    .search-btn {
+      position: absolute;
+      height: 49px;
+      width: 56px;
+      line-height: 0;
+      right: 0;
+      top: 0;
+      background: #999;
+      z-index: 9;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 34.5px;
+      }
+    }
+    .search-btn:hover {
+      background: rgb(179, 179, 179);
+    }
+  }
+}
+
+// advanced search
+.advancedSearchDiv {
+  padding-bottom: 15px;
+  position: absolute;
+  background-color: #fff;
+  width: 100%;
+  top: 58px;
+  z-index: 10001;
+  border-bottom: 1px solid #e6e6e6;
+  .iconClose {
+    background-color: #f2f2f2;
+    border: none;
+    border: solid 1px #cfcfcf;
+    border-radius: 50%;
+    color: #666;
+    cursor: pointer;
+    display: block;
+    height: 2rem;
+    text-align: center;
+    width: 2rem;
+    display: none;
+  }
+  .iconClose::before {
+    font-size: 33px;
+    color: #cfcfcf;
+    display: block;
+    font-weight: 300;
+    left: 0.55rem;
+    position: absolute;
+    text-align: center;
+    top: -0.3rem;
+    color: #828282;
+    content: '\00D7';
+    margin: -1px 0 0 1px;
+    position: static;
+  }
+  .inputWrapper {
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    -ms-flex-align: center;
+    min-height: 49px;
+    line-height: 3.125rem;
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    position: relative;
+    .magnifyingGlassIcon {
+      background: url(https://secureimages.allrecipes.com/assets/deployables/v-1.165.0.5109/svg/sprite.css.svg)
+        no-repeat;
+      -ms-transform: scale(0.75, 0.75);
+      transform: scale(0.75, 0.75);
+      display: inline-block;
+      width: 46px;
+      height: 46px;
+      background-position: 89.13520408163265% 71.42857142857143%;
+    }
+    .keyWordsInput {
+      width: 100%;
+      padding-left: 0;
+      font-style: italic;
+      font-size: 1rem;
+      border: none;
+      display: inline-block;
+      float: left;
+      height: 100%;
+      margin: 0;
+      padding: 0 0 0 2%;
+      text-decoration: none;
+    }
+    .excludeInner {
+      flex-shrink: 0;
+      width: calc(100% - 56px);
+      margin: 0 4px;
+    }
+    .addExclude {
+      height: 41px;
+      display: inline-block;
+      width: 100%;
+      min-width: 40px;
+      float: left;
+      margin: 2px 0;
+    }
+    .excludeInput {
+      font-size: 1rem;
+      width: 100%;
+      line-height: normal;
+      min-width: 40px;
+      background-color: #f2f2f2;
+      padding-left: 8px;
+      font-style: italic;
+      border: none;
+      display: inline-block;
+      float: left;
+      height: 100%;
+      margin: 0;
+      padding: 0 0 0 2%;
+      text-decoration: none;
+    }
+    .excludeButton {
+      cursor: pointer;
+      display: -ms-flexbox;
+      display: flex;
+      align-items: center;
+      -ms-flex-align: center;
+      justify-content: center;
+      -ms-flex-pack: center;
+      position: absolute;
+      right: 0;
+      top: 0;
+      line-height: 3rem;
+      height: 3rem;
+      width: 3rem;
+      background-color: #fafafa;
+      border-left: 1px solid #cfcfcf;
+      border-bottom: 1px solid #cfcfcf;
+      color: #ee4036;
+      font-size: 36px;
+      max-width: 459px;
+      padding: 0 5%;
+      text-align: center;
+      white-space: nowrap;
+      span {
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+    }
+    .excludeButton:hover {
+      background-color: #f2f2f2;
+      span {
+        font-weight: 900;
+      }
+    }
+    .keyWordsInput::placeholder,
+    .excludeInput::placeholder {
+      color: #b2b2b2;
+      opacity: 1;
+    }
+  }
+}
+
+.excludedDiv {
+  margin: 81px 8px 16px;
+  .excludedP {
+    background-color: #ee4036;
+    display: block;
+    padding: 0 0.5rem;
+    margin-right: 3px;
+    white-space: nowrap;
+    color: #fff;
+    height: 2.6rem;
+    line-height: 2.6rem;
+    font-size: 1.125rem;
+    display: inline-block;
+    cursor: pointer;
+    margin-bottom: 5px;
+    .excludedItem {
+      font-weight: 700;
+    }
+    .xButton {
+      position: relative;
+      left: 0.5rem;
+      padding: 10px 10px 10px 0;
+      font-weight: 700;
+    }
+  }
+}
+
+#advancedSearchFormButton {
+  float: left;
+  margin-top: 1rem;
+  width: 95%;
+  margin: 0 2.5%;
+  font-size: 1.25rem;
+  background-color: #feaa26;
+  height: 3.125rem;
+  border: 0 none;
+  border-radius: 0;
+  color: #fff;
+  display: inline-block;
+  max-width: 459px;
+  padding: 0 5%;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 3.125rem;
+  margin-top: 10px;
+}
+
+#advancedSearchFormButton:hover {
+  background: #ed9702;
+}
+
+.calSection,
+.dietSection,
+.healthSection {
+  float: left;
+  width: 33%;
+}
+
+.calSection .subSection,
+.calSection label,
+.dietSection label,
+.healthSection label {
+  color: #4d4d4d;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  -ms-flex-align: center;
+  font-size: 15px;
+  line-height: 29px;
+  cursor: pointer;
+  letter-spacing: 0.1rem;
+  margin-left: 5px;
+  margin-right: 30%;
+}
+
+.subSection input {
+  border-bottom: 1px solid #e6e6e6;
+  width: 100%;
+  margin-left: 10px;
+}
+
+.subSection {
+  white-space: pre;
+}
+
+.mt16 {
+  margin-top: 16px;
+}
+
+.advancedSearchSectionHeader {
+  border-bottom: 1px solid #e6e6e6;
+  display: block;
+  margin-right: 30%;
+  color: #4d4d4d;
+  font-size: 18px;
+  font-weight: 400;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.calSection label:hover span,
+.dietSection label:hover span,
+.healthSection label:hover span {
+  color: rgba(138, 193, 62, 0.5);
+}
+
+input[type='radio']:checked + span {
+  color: #8ac13e;
+}
+
+@media only screen and (max-width: 450px) {
+  .advancedSearchSectionHeader {
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .advancedSearchDiv {
+    border: 1px solid #e6e6e6;
+    width: 100vw;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    left: -275px;
+    padding: 0 16px 24px 16px;
+    font-size: 1.5rem;
+    border-top: none;
+    .iconClose {
+      display: none;
+    }
+    .inputWrapper {
+      width: calc((100vw - 50px));
+      float: left;
+      clear: none;
+      margin: 16px auto 0;
+    }
+    .exclude {
+      margin-bottom: 16px;
+    }
+  }
+  .advancedSearchDiv .inputWrapper .excludeButton {
+    padding: 0 2.5%;
+  }
+  .calSection,
+  .dietSection,
+  .healthSection {
+    float: none;
+    width: 100%;
+  }
+  .advancedSearchSectionHeader {
+    width: 40%;
+    min-width: 150px;
+  }
+  .calSection .calSubSection {
+    width: calc((49vw - 25px));
+    float: left;
+    margin-right: 0;
+  }
+  .calSection .mw180 {
+    min-width: 180px;
+  }
+  .mt50small {
+    margin-top: 50px;
+  }
+  .calSection label,
+  .dietSection label,
+  .healthSection label {
+    margin-left: 5px;
+    display: inline-block;
+    margin-right: 5px;
+  }
+  #advancedSearchFormButton {
+    max-width: none;
+  }
+  .mt10small {
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .advancedSearchDiv {
+    border: 1px solid #e6e6e6;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding: 24px 16px;
+    font-size: 1.5rem;
+    .iconClose {
+      display: -ms-flexbox;
+      display: flex;
+      align-items: center;
+      -ms-flex-align: center;
+      justify-content: center;
+      -ms-flex-pack: center;
+      position: absolute;
+      right: 0.5rem;
+      top: 0.5rem;
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+    .inputWrapper {
+      width: calc((50vw - 25px));
+      float: left;
+      clear: none;
+      margin: 16px 4px;
+    }
+    .iconClose:hover {
+      background-color: #e6e6e6;
+    }
+    .iconClose:hover::before {
+      color: rgb(128, 128, 128);
+    }
+  }
+}
+
+@media only screen and (max-width: 899px) and (min-width: 768px) {
+  .searchContainer {
+    width: calc((100vw - 362px));
+    left: 122px;
+  }
+}
+
+@media only screen and (max-width: 1023px) and (min-width: 900px) {
+  .searchContainer {
+    width: calc((100vw - 515px));
+  }
+}

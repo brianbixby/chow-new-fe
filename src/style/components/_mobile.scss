@@ -1,0 +1,141 @@
+#showWhenSmallNutritionalInfo {
+  display: none;
+}
+
+#showWhenLargeNutritionalInfo {
+  display: inline;
+}
+
+@media only screen and (max-width: 765px) {
+  #showWhenLargeNutritionalInfo {
+    display: none;
+  }
+  #showWhenSmallNutritionalInfo {
+    display: inline;
+  }
+  .individualResultImg {
+    margin: 0;
+  }
+  #individualImgDiv {
+    text-align: center;
+  }
+  .individualResultLabel {
+    text-align: center;
+    margin: 0;
+  }
+  #favoriteButton {
+    margin: 0;
+  }
+  #summaryDiv {
+    text-align: center;
+    margin: auto;
+  }
+  a.individualResultHealthLabel,
+  a.individualResultDietLabel {
+    text-align: center;
+    margin: 0px;
+    padding: 0;
+  }
+  .individualResultIngredients {
+    margin: 0px;
+    padding: 0;
+  }
+  .individualResultNutritionBox {
+    margin: 0;
+    padding: 0;
+  }
+  h5,
+  .individualResultNutritionDiv {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  #search-form {
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  #search-form {
+    margin-left: 12%;
+    margin-right: 12%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #search-form {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+@media only screen and (max-width: 490px) {
+  .tile {
+    height: 180px;
+    width: 130px;
+  }
+  .tilePic {
+    height: 150px;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+  }
+  .allResultsFavButton {
+    right: 0px;
+    top: 0px;
+  }
+  .allResultsFavButton:hover .glyphicon {
+    border: 2px white solid;
+  }
+  .allResultsFavButtonText {
+    display: none;
+  }
+  .tileLabel {
+    color: white;
+    text-align: left;
+    font-size: 11px;
+    font-weight: bold;
+    padding-left: 2px;
+    padding-top: 2px;
+    padding-right: 30px;
+    margin-left: 0px;
+    width: 100%;
+    height: 180px;
+  }
+  .tileWoutFavButton:hover .tileLabel {
+    color: white;
+  }
+  .tileCalorieAndIngredientText {
+    display: none;
+  }
+  .tileCalorieAndIngredientTextHidden {
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+    top: 157px;
+    left: 17px;
+    font-size: 8px;
+    margin: 0px;
+    padding: 0px;
+  }
+  .tileCalorieTextNumber {
+    font-size: 12px;
+  }
+  .tileIngredientTextNumber {
+    font-size: 12px;
+  }
+  .tileSource {
+    padding: 0px;
+    margin: 0px;
+    color: white;
+    position: absolute;
+    top: 125px;
+    left: 5px;
+  }
+  .tileSource:hover {
+    color: white;
+  }
+}

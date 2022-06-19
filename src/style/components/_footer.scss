@@ -1,0 +1,99 @@
+footer {
+  background-color: #fafafa;
+  border-top: 1px solid #e6e6e6;
+  margin-top: 25px;
+  .socialIcons {
+    float: left;
+    max-width: 165px;
+    li {
+      display: -ms-flexbox;
+      display: flex;
+      align-items: center;
+      -ms-flex-align: center;
+      justify-content: center;
+      -ms-flex-pack: center;
+      background-color: #cfcfcf;
+      border-radius: 32px;
+      float: left;
+      height: 32px;
+      margin: 0 7px 7px 0;
+      overflow: hidden;
+      position: relative;
+      width: 32px;
+      a {
+        display: -ms-flexbox;
+        display: flex;
+        align-items: center;
+        -ms-flex-align: center;
+        justify-content: center;
+        -ms-flex-pack: center;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        background-color: #cfcfcf;
+        span {
+          position: relative;
+          width: 14px;
+          height: 14px;
+        }
+        .githubSpan {
+          background: url(./../components/helpers/assets/gh.png) no-repeat
+            center center;
+          background-size: cover;
+          transform: scale(2, 2);
+          left: -1px;
+        }
+        .linkedinSpan {
+          background: url(./../components/helpers/assets/li.png) no-repeat
+            center center;
+          background-size: cover;
+          transform: scale(1.5, 1.5);
+        }
+      }
+      a:hover {
+        background-color: #999999;
+      }
+    }
+  }
+  .creator {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: #ff7e1a;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+  }
+  .creator:hover {
+    color: #feaa26;
+  }
+}
+
+.footerWrapper {
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  clear: both;
+  width: 100%;
+  padding: 20px;
+  margin: 0;
+  position: relative;
+}
+
+.footerTile {
+  display: inline-block;
+  position: relative;
+  float: left;
+  width: 46.25%;
+  vertical-align: top;
+}
+
+@media only screen and (min-width: 768px) {
+  footer .socialIcons {
+    -ms-transform: scale(1, 1);
+    transform: scale(1, 1);
+    width: 80%;
+    margin-left: 0 !important;
+  }
+}

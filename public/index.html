@@ -1,43 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html itemscope="" itemtype="http://schema.org/WebPage" lang="en">
   <head>
+    <!-- <script src="http://localhost:8097"></script> -->
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+    />
     <meta name="theme-color" content="#000000" />
+    <meta name="publisher" content="true" />
+    <meta name="wcmmode" content="DISABLED" />
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="A NBA Pick 'em App by Brian Bixby - Full Stack Javascript Developer from Seattle, WA United States."
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link
+      href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF1b3GAsyxngUUOi7Ek7g2hFL2NoPSM+6DkXGdw1DxBgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAbW/8CHF//dBhW//QUSe3/G17//xpc//8YWfz/FVTv/xFM2v8JMbX1C0K+dA9F0QIAAAAAAAAAAAAAAAAgZf8CIGf/niFp//8XTv//I2z//yNs//8iav//IGb//x1g//8ZWf7/DTnK/w9Iz/8LQr+eD0XRAgAAAAAAAAAAJG7/dCZy//8pd///H13//yx8//8se///Knj//yh0//8kbv//GVT//xdT+P8VVO7/D0jP/wxCv3QAAAAAKHX/GSl4//QugP//MH///y92//88kP//O47//zeK//8wgv//K3r//xtU//8haP//G13//xRS6v8ORsn0DUTEGCx+/3cxhf//PZH//zuI//9Flf//UKb//06k//9Jn///QZb//zKB//8iZf//JnH//yBm//8ZWv//Ek7e/w1Fxnczhv+6P5T//02k//9Lmv//Vqf//2S7//9iuf//W7L//1Gn//8xdf//Nor//yt6//8kbv//HWL//xVU7/8PSdG6LHL/3Eyi//9bs///Yrf//16t//930v//dc///23G//9arf//P4j//0GW//8xg///KHX//yBn//8ZWv//CzbC3C1w/9pVrP//Z8D//3fS//9ltf//iuj//4fk//981///T5n//1yz//9KoP//N4v//yt6//8ja///GVf//ww4ydpElv+6R5H//2/K//+C3v//cMH//579//+X9v//eM///2Cx//9iuv//T6b//zyR//8sff//JG7//xFB4v8VU+66TqX/d0mV//9nvf//heL//3TG//+o////nv3//2Sx//930///ZLz//1Cn//89kv//LH3//xhO//8bXf//Flb2d0yk/xhbtP/0UJv//3HI//9xw///mfj//3PF//981f//c87//2G6//9Opf//L3n//x5d//8ja///HGD/9BhZ/RgAAAAAVq//dWS+//87fP//ar3//3jR//9nuf//eNT//2a+//9Di///NHr//zCA//8qef//Imz//x1i/3QAAAAAAAAAAEmg/wI9hP+fYLj//12w//85eP//X7L//1mq//9Ejv//TaT//z6U//8vg///J3T//yFq/54cXv8CAAAAAAAAAAAAAAAASaD/Alex/3VBif/1XbX//0iU//8zdP//OYL//zB3//8mav//Hl3/9BdO/3cbXf8CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATKP/GU+o/3c3f/+7RZ3/2j6U/9o1i/+6LoL/dyp6/xkAAAAAAAAAAAAAAAAAAAAA8A8AAMADAACAAQAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAEAAIABAADAAwAA8A8AAA=="
+      rel="icon"
+      type="image/x-icon"
+    />
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://* blob: data:; script-src  * 'unsafe-eval' 'unsafe-inline'; style-src 'self' https://*; child-src *; connect-src https://*;"> -->
+    <title>Bracket Busters</title>
+    <link rel="canonical" href="https://www.bracket-busters.us" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="A NBA Pick 'em App by Brian Bixby" />
+    <meta
+      property="og:description"
+      content="Full Stack Javascript Developer from Seattle, WA United States."
+    />
+    <meta property="og:url" content="https://www.bracket-busters.us" />
+    <meta
+      property="og:image"
+      content="./components/helpers/assets/siteImage.webp"
+    />
+    <meta property="og:site_name" content="Bracket Busters" />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:description"
+      content="Full Stack Javascript Developer from Seattle, WA United States."
+    />
+    <meta name="twitter:title" content="A NBA Pick 'em App by Brian Bixby" />
+    <meta
+      name="twitter:image"
+      content="./components/helpers/assets/siteImage.webp"
+    />
+    <meta
+      name="keywords"
+      content="Brian Bixby, NBA Pick 'em, MERN Stack App, React Redux App, Best Javascript Developer Seattle, top 10 Full stack web developer Seattle"
+    />
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>
