@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 import Footer from '../footer';
 import UserProfileForm from '../userProfile-form';
@@ -254,6 +253,4 @@ let mapDispatchToProps = dispatch => ({
   userProfileUpdate: profile => dispatch(userProfileUpdateRequest(profile)),
 });
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ProfileContainer)
-);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainer);

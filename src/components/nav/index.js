@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Avatar from '../helpers/avatar';
 import Modal from '../helpers/modal';
@@ -466,12 +466,12 @@ class Navbar extends React.Component {
   }
 }
 
-let mapStateToProps = state => ({
+const mapStateToProps = state => ({
   userAuth: state.userAuth,
   userProfile: state.userProfile,
 });
 
-let mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
   signOut: () => dispatch(signOut()),
   recipesFetch: (queryString, queryParams, min, infiniteSearch) =>
     dispatch(
@@ -484,4 +484,4 @@ let mapDispatchToProps = dispatch => ({
   userProfileFetch: () => dispatch(userProfileFetchRequest()),
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Navbar));
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

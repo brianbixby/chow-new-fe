@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 import Footer from '../footer';
 import RecipesMap from '../recipes-map';
@@ -371,6 +370,4 @@ let mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(RecipeContainer)
-);
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeContainer);

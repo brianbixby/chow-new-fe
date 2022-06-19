@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 import Footer from '../footer';
 import RecipesMap from '../recipes-map';
@@ -15,7 +14,7 @@ import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 import { favoritesFetchRequest } from '../../actions/favorite-actions.js';
 import { logged } from '../../actions/log-actions.js';
 import { userValidation, logError, renderIf } from './../../lib/util.js';
-import css from './../../style/main.scss';
+import './../../style/main.scss';
 
 class LandingContainer extends React.Component {
   constructor(props) {
@@ -389,6 +388,4 @@ let mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(LandingContainer)
-);
+export default connect(mapStateToProps, mapDispatchToProps)(LandingContainer);
