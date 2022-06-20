@@ -15,6 +15,21 @@ import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 import { favoritesFetchRequest } from '../../actions/favorite-actions.js';
 import { logged } from '../../actions/log-actions.js';
 import { userValidation, logError, renderIf } from './../../lib/util.js';
+import image1 from './../helpers/assets/1.png';
+import image2 from './../helpers/assets/2.png';
+import image3 from './../helpers/assets/3.png';
+import image4 from './../helpers/assets/4.png';
+import image5 from './../helpers/assets/5.png';
+import image6 from './../helpers/assets/6.png';
+import image7 from './../helpers/assets/7.png';
+import image8 from './../helpers/assets/8.png';
+import image9 from './../helpers/assets/9.png';
+import image10 from './../helpers/assets/10.png';
+import image11 from './../helpers/assets/11.png';
+import image12 from './../helpers/assets/12.png';
+import image13 from './../helpers/assets/13.png';
+import image14 from './../helpers/assets/14.png';
+import image15 from './../helpers/assets/15.png';
 import './../../style/main.scss';
 
 function LandingContainer(props) {
@@ -22,7 +37,7 @@ function LandingContainer(props) {
   const [slideWidth, setSlideWidth] = useState(270);
 
   useEffect(() => {
-    userValidation(props);
+    userValidation(props, navigate);
     if (
       localStorage.random0 &&
       JSON.parse(localStorage.getItem('random0'))['timestamp'] >
@@ -174,32 +189,32 @@ function LandingContainer(props) {
     {
       header: 'Sensational Sangria Recipes',
       subHeader: 'Browse hundreds of variations on this fun and fruity punch.',
-      image: require('./../helpers/assets/1.png'),
+      image: image1,
       link: 'search?q=sangria&calories=0-10000',
     },
     {
       header: 'Hummus Recipes',
       subHeader: 'Browse hundreds of ways to get your dip on.',
-      image: require('./../helpers/assets/2.png'),
+      image: image2,
       link: 'search?q=hummus&calories=0-10000',
     },
     {
       header: 'Greek Pasta Salad',
       subHeader:
         'These salads are filled with bold flavors: kalamata olives, feta cheese and fresh herbs.',
-      image: require('./../helpers/assets/3.png'),
+      image: image3,
       link: 'search?q=greek%20pasta%20salad&calories=0-10000',
     },
     {
       header: 'Sloppy Bulgogi and other Fusion Mashups.',
       subHeader: 'Try these delicious cross-cultural combos.',
-      image: require('./../helpers/assets/4.png'),
+      image: image4,
       link: 'search?q=fusion&calories=0-10000',
     },
     {
       header: 'Chicken Teriyaki Skewers',
       subHeader: 'See how to make delicious Summery chicken teriyaki skewers.',
-      image: require('./../helpers/assets/5.png'),
+      image: image5,
       link: 'search?q=chicken%20teriyaki%20skewers&calories=0-10000',
     },
   ];
@@ -207,52 +222,52 @@ function LandingContainer(props) {
   const subItems = [
     {
       title: 'World Cuisine',
-      image: require('./../helpers/assets/6.png'),
+      image: image6,
       link: 'search?q=world%20cuisine&calories=0-10000',
     },
     {
       title: 'Vegan Recipes',
-      image: require('./../helpers/assets/7.png'),
+      image: image7,
       link: 'search?q=vegan&calories=0-10000',
     },
     {
       title: 'Slow Cooker',
-      image: require('./../helpers/assets/8.png'),
+      image: image8,
       link: 'search?q=slow%20cooker&calories=0-10000',
     },
     {
       title: 'Shrimp Recipes',
-      image: require('./../helpers/assets/9.png'),
+      image: image9,
       link: 'search?q=shrimp&calories=0-10000',
     },
     {
       title: 'Cookies',
-      image: require('./../helpers/assets/10.png'),
+      image: image10,
       link: 'search?q=cookie&calories=0-10000',
     },
     {
       title: 'Chicken Recipes',
-      image: require('./../helpers/assets/11.png'),
+      image: image11,
       link: 'search?q=chicken&calories=0-10000',
     },
     {
       title: 'Cake Recipes',
-      image: require('./../helpers/assets/12.png'),
+      image: image12,
       link: 'search?q=cake&calories=0-10000',
     },
     {
       title: 'Breakfast',
-      image: require('./../helpers/assets/13.png'),
+      image: image13,
       link: 'search?q=breakfast&calories=0-10000',
     },
     {
       title: 'Bread Recipes',
-      image: require('./../helpers/assets/14.png'),
+      image: image14,
       link: 'search?q=bread&calories=0-10000',
     },
     {
       title: 'Appetizers',
-      image: require('./../helpers/assets/15.png'),
+      image: image15,
       link: 'search?q=appetizers&calories=0-10000',
     },
   ];

@@ -21,6 +21,7 @@ import {
   renderIf,
   classToggler,
 } from './../../lib/util.js';
+import profilePlaceholderImg from './../helpers/assets/icons/profilePlaceholder.png';
 
 function ProfileContainer(props) {
   let navigate = useNavigate();
@@ -29,7 +30,7 @@ function ProfileContainer(props) {
   const [userSuccessMessage, setUserSuccessMessage] = useState('');
 
   useEffect(() => {
-    userValidation(props);
+    userValidation(props, navigate, true);
     setUserSuccess(false);
     setEditProfile(false);
     setUserSuccessMessage('');
@@ -75,7 +76,7 @@ function ProfileContainer(props) {
   let profileImage =
     props.userProfile && props.userProfile.image
       ? props.userProfile.image
-      : require('./../helpers/assets/icons/profilePlaceholder.png');
+      : profilePlaceholderImg;
   let { favorites, userProfile } = props;
   return (
     <div className="main">

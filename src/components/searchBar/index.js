@@ -5,6 +5,7 @@ import { isInt } from 'validator';
 import { recipesFetch } from '../../actions/search-actions.js';
 import Tooltip from '../helpers/tooltip';
 import { renderIf, classToggler } from './../../lib/util.js';
+import magnify from './../helpers/assets/icons/magnify.icon.svg';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -190,7 +191,7 @@ class SearchBar extends React.Component {
       focused,
       submitted,
     } = this.state;
-    let magnify = require('./../helpers/assets/icons/magnify.icon.svg');
+
     return (
       <div
         className={classToggler({
@@ -477,7 +478,7 @@ class SearchBar extends React.Component {
   }
 }
 
-let mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
   recipesFetchRequest: recipes => dispatch(recipesFetch(recipes)),
 });
 

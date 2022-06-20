@@ -32,7 +32,7 @@ function RecipeContainer(props) {
   const [pageBottom, setPageBottom] = useState(false);
 
   useEffect(() => {
-    userValidation(props);
+    userValidation(props, navigate);
     let uri = window.location.href.split('/recipe/')[1];
     if (
       !props.recipe ||

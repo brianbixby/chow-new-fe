@@ -29,7 +29,7 @@ function RecipesContainer(props) {
   const [userSuccessMessage, setUserSuccessMessage] = useState('');
 
   useEffect(() => {
-    userValidation(props);
+    userValidation(props, navigate);
     if (!props.recipes || !props.recipes.hits || !props.recipes.hits.length) {
       let string = window.location.href.split('/search/')[1];
       let hashIndex = string.indexOf('&');

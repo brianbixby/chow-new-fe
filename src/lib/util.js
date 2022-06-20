@@ -21,7 +21,7 @@ export const formatDate = date => {
   return `${dateArr[1]} ${dateArr[2]}, ${dateArr[3]}`;
 };
 
-export const userValidation = async (props, navigate, redirect = true) => {
+export const userValidation = async (props, navigate, redirect = false) => {
   try {
     if (!props.userAuth) {
       const token = localStorage.getItem('chowToken');
@@ -31,7 +31,6 @@ export const userValidation = async (props, navigate, redirect = true) => {
         await props.favoritesFetch(profile.body);
         return;
       } else {
-        // to do only: /profile/*
         if (redirect) {
           navigate('/');
         }
