@@ -37,23 +37,33 @@ class UserAuthForm extends React.Component {
     let deleteError = name => (errors[`${name}Error`] = null);
 
     if (name === 'email') {
-      if (!value) setError(name, `${name} can not be empty`);
-      else if (!isEmail(value)) setError(name, `${value} is not a valid email`);
-      else deleteError(name);
+      if (!value) {
+        setError(name, `${name} can not be empty`);
+      } else if (!isEmail(value)) {
+        setError(name, `${value} is not a valid email`);
+      } else {
+        deleteError(name);
+      }
     }
 
     if (name === 'username') {
-      if (!value) setError(name, `${name} can not be empty`);
-      else if (!isAlphanumeric(value))
+      if (!value) {
+        setError(name, `${name} can not be empty`);
+      } else if (!isAlphanumeric(value)) {
         setError(name, 'username can only contain letters and numbers');
-      else deleteError(name);
+      } else {
+        deleteError(name);
+      }
     }
 
     if (name === 'password') {
-      if (!value) setError(name, `${name} can not be empty`);
-      else if (!isAscii(value))
+      if (!value) {
+        setError(name, `${name} can not be empty`);
+      } else if (!isAscii(value)) {
         setError(name, 'password may only contain normal charachters');
-      else deleteError(name);
+      } else {
+        deleteError(name);
+      }
     }
 
     this.setState({
@@ -95,7 +105,7 @@ class UserAuthForm extends React.Component {
     if (!this.state.error) {
       this.props.onComplete(this.state, this.handleError).catch(err => {
         this.setState({
-          error,
+          error: err,
           submitted: true,
         });
       });

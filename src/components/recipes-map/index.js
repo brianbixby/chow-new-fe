@@ -14,13 +14,13 @@ class RecipesMap extends React.Component {
     this.state = { userSuccess: false, userSuccessMessage: '' };
   }
 
-  handleBoundRecipeClick = (myRecipe, e) => {
+  handleBoundRecipeClick = myRecipe => {
     this.props.recipeFetchRequest(myRecipe.recipe);
     let uri = myRecipe.recipe.uri.split('recipe_')[1];
     return this.props.redirect(`/recipe/${uri}`);
   };
 
-  handleBoundFavoriteClick = (favorite, e) => {
+  handleBoundFavoriteClick = favorite => {
     if (this.props.userAuth) {
       let found = this.props.favorites.filter(
         fav => fav.uri == favorite.recipe.uri

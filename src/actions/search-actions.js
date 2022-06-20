@@ -65,7 +65,9 @@ export const recipeFetchRequest = recipeURI => dispatch => {
   let url = `https://api.edamam.com/search?${qString}${process.env.REACT_APP_RECIPE_SEARCH_API_KEY4}`;
 
   return superagent.get(url).then(res => {
-    if (!res.body.length) return null;
+    if (!res.body.length) {
+      return null;
+    }
     dispatch(recipeFetch(res.body[0]));
     return res.body[0];
   });

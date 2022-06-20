@@ -68,8 +68,11 @@ class SearchBar extends React.Component {
     let deleteError = name => (errors[`${name}Error`] = null);
 
     if (name === 'minCals' || name === 'maxCals' || name === 'maxIngredients') {
-      if (value && !isInt(value)) setError(name, `${name} must be a number`);
-      else deleteError(name);
+      if (value && !isInt(value)) {
+        setError(name, `${name} must be a number`);
+      } else {
+        deleteError(name);
+      }
     }
 
     this.setState({
@@ -156,14 +159,14 @@ class SearchBar extends React.Component {
     }));
   };
 
-  handleExclude = e => {
+  handleExclude = () => {
     this.setState({
       excludedArr: [...this.state.excludedArr, this.state.exclude],
       exclude: '',
     });
   };
 
-  handleBoundExcludeClick = (exclude, e) => {
+  handleBoundExcludeClick = exclude => {
     this.setState({
       excludedArr: this.state.excludedArr.filter(
         excluded => excluded !== exclude
@@ -171,7 +174,7 @@ class SearchBar extends React.Component {
     });
   };
 
-  handleAdvancedSearch = e => {
+  handleAdvancedSearch = () => {
     this.props.advancedSearch();
     this.setState({ advancedSearch: !this.state.advancedSearch });
   };
@@ -197,9 +200,9 @@ class SearchBar extends React.Component {
         })}
       >
         <form
-          className="searchForm"
           onSubmit={this.handleSubmit}
           className={classToggler({
+            searchForm: true,
             form: true,
             error: error && submitted,
           })}
@@ -410,7 +413,7 @@ class SearchBar extends React.Component {
                 <span className="advancedSearchSectionHeader mt10small">
                   Diet (click one)
                 </span>
-                <div className="allergyFormGroup" className="form-group">
+                <div className="allergyFormGroup form-group">
                   <label>
                     <input
                       type="radio"

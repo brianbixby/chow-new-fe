@@ -13,7 +13,9 @@ class UserProfileForm extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    if (props.userProfile) this.setState(props.userProfile);
+    if (props.userProfile) {
+      this.setState(props.userProfile);
+    }
   }
 
   handleSubmit = e => {

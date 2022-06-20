@@ -21,8 +21,10 @@ import {
   classToggler,
   userValidation,
 } from './../../lib/util.js';
+import cal from './../helpers/assets/icons/cal.icon.svg';
+import serving from './../helpers/assets/icons/serving.icon.svg';
 
-function RecipeContainer() {
+function RecipeContainer(props) {
   let navigate = useNavigate();
   const [userSuccess, setUserSuccess] = useState(false);
   const [recipeError, setRecipeError] = useState(false);
@@ -40,7 +42,9 @@ function RecipeContainer() {
       props
         .recipeFetch(uri)
         .then(recipe => {
-          if (!recipe) return setRecipeError(true);
+          if (!recipe) {
+            return setRecipeError(true);
+          }
           if (!props.recipes.length) {
             props
               .recipesFetch('search?q=summer', '&calories=0-10000', 0, false)
@@ -99,8 +103,8 @@ function RecipeContainer() {
     setTimeout(() => setUserSuccess(false), 5000);
   };
 
-  const calsPS = (cals, servings) => Math.round(cals / servings);
-  const calsPD = (cals, servings) => (cals / servings / 20).toFixed(0);
+  //   const calsPS = (cals, servings) => Math.round(cals / servings);
+  //   const calsPD = (cals, servings) => (cals / servings / 20).toFixed(0);
 
   const handleRedirect = url => {
     navigate(url);
@@ -111,15 +115,18 @@ function RecipeContainer() {
     const el = document.getElementById('recipePageWrapper');
 
     if (el.getBoundingClientRect().bottom <= window.innerHeight + 100) {
-      if (!pageBottom) setState({ pageBottom: true });
+      if (!pageBottom) {
+        setPageBottom(true);
+      }
     } else {
-      if (pageBottom) setState({ pageBottom: false });
+      if (pageBottom) {
+        setPageBottom(false);
+      }
     }
   };
 
   let { recipe } = props;
-  const cal = require('./../helpers/assets/icons/cal.icon.svg');
-  const serving = require('./../helpers/assets/icons/serving.icon.svg');
+
   let likedRecipe =
     props.favorites && props.favorites.some(o => o['uri'] === recipe.uri);
   return (
@@ -321,7 +328,7 @@ function RecipeContainer() {
                     sliderPopup: true,
                     clozed: userSuccess,
                   })}
-                  onClick={() => setState({ userSuccess: false })}
+                  onClick={() => setUserSuccess(false)}
                 >
                   <p>{userSuccessMessage}</p>
                 </div>
