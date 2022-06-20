@@ -12,9 +12,9 @@ class UserProfileForm extends React.Component {
         };
   }
 
-  componentWillReceiveProps(props) {
-    if (props.userProfile) {
-      this.setState(props.userProfile);
+  componentDidUpdate(prevProps) {
+    if (this.props.userProfile !== prevProps.userProfile) {
+      this.setState(this.props.userProfile);
     }
   }
 
@@ -43,6 +43,7 @@ class UserProfileForm extends React.Component {
             value={this.state.state || ''}
             name="state"
             onChange={this.handleChange}
+            autoComplete="address-level1"
           />
           <label htmlFor="country" className="profileFormLabel">
             Country:{' '}
@@ -53,6 +54,7 @@ class UserProfileForm extends React.Component {
             value={this.state.country || ''}
             name="country"
             onChange={this.handleChange}
+            autoComplete="country"
           />
           <label htmlFor="image" className="profileFormLabel">
             Profile img URL:{' '}
@@ -63,6 +65,7 @@ class UserProfileForm extends React.Component {
             value={this.state.image || ''}
             name="image"
             onChange={this.handleChange}
+            autoComplete="photo"
           />
           <p className="textRight">
             <button className="red-button b-button" type="submit">

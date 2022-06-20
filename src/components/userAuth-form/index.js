@@ -139,6 +139,10 @@ class UserAuthForm extends React.Component {
       usernameError,
       usernameAvailable,
     } = this.state;
+    let passwordAutocompleteValue =
+      this.props.authFormAction === 'Sign Up'
+        ? 'new-password'
+        : 'current-password';
     return (
       <form
         onSubmit={this.handleSubmit}
@@ -162,6 +166,7 @@ class UserAuthForm extends React.Component {
                     onChange={this.handleChange}
                     onFocus={this.handleFocus}
                     onBlur={this.handleBlur}
+                    autoComplete="email"
                   />
                 </div>
               </div>
@@ -192,6 +197,7 @@ class UserAuthForm extends React.Component {
                 onChange={this.handleChange}
                 onFocus={this.handleFocus}
                 onBlur={this.handleBlur}
+                autoComplete="username"
               />
             </div>
           </div>
@@ -221,6 +227,7 @@ class UserAuthForm extends React.Component {
                 onChange={this.handleChange}
                 onFocus={this.handleFocus}
                 onBlur={this.handleBlur}
+                autoComplete={passwordAutocompleteValue}
               />
             </div>
           </div>

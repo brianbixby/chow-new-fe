@@ -30,11 +30,8 @@ class SearchBar extends React.Component {
     };
   }
 
-  componentWillMount() {
-    window.addEventListener('resize', this.updateWindowDimensions);
-    this.updateWindowDimensions();
-  }
   componentDidMount() {
+    window.addEventListener('resize', this.updateWindowDimensions);
     this.updateWindowDimensions();
   }
 

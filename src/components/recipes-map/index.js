@@ -11,6 +11,7 @@ import { renderIf, logError, classToggler } from '../../lib/util';
 class RecipesMap extends React.Component {
   constructor(props) {
     super(props);
+    this.asideRef = React.createRef();
     this.state = { userSuccess: false, userSuccessMessage: '' };
   }
 
@@ -53,21 +54,19 @@ class RecipesMap extends React.Component {
   calsPS = (cals, servings) => Math.round(cals / servings);
 
   handleUpClick = () => {
-    this.refs.asideRef
-      ? this.refs.asideRef.scrollBy(0, -1 * (window.innerHeight - 132))
+    this.asideRef
+      ? this.asideRef.scrollBy(0, -1 * (window.innerHeight - 132))
       : null;
   };
 
   handleDownClick = () => {
-    this.refs.asideRef
-      ? this.refs.asideRef.scrollBy(0, window.innerHeight - 132)
-      : null;
+    this.asideRef ? this.asideRef.scrollBy(0, window.innerHeight - 132) : null;
   };
 
   render() {
     let { recipes } = this.props;
     return (
-      <div className={this.props.containerClass} ref="asideRef">
+      <div className={this.props.containerClass} ref={this.asideRef}>
         <div
           className="iconChevronUp asideIcon"
           onClick={this.handleUpClick}

@@ -34,6 +34,8 @@ import './../../style/main.scss';
 
 function LandingContainer(props) {
   let navigate = useNavigate();
+  let subItemScrollerRef = React.createRef();
+  let sliderScrollerRef = React.createRef();
   const [slideWidth, setSlideWidth] = useState(270);
 
   useEffect(() => {
@@ -134,23 +136,23 @@ function LandingContainer(props) {
   //   const calsPS = (cals, servings) => Math.round(cals / servings);
 
   const handleRightClick = () => {
-    refs.subItemScroller
-      ? (refs.subItemScroller.scrollLeft += window.innerWidth)
+    subItemScrollerRef
+      ? (subItemScrollerRef.scrollLeft += window.innerWidth)
       : null;
   };
 
   const handleLeftClick = () => {
-    refs.subItemScroller
-      ? (refs.subItemScroller.scrollLeft -= window.innerWidth)
+    subItemScrollerRef
+      ? (subItemScrollerRef.scrollLeft -= window.innerWidth)
       : null;
   };
 
   const handleSliderRightClick = () => {
-    refs.sliderScroller ? (refs.sliderScroller.scrollLeft += slideWidth) : null;
+    sliderScrollerRef ? (sliderScrollerRef.scrollLeft += slideWidth) : null;
   };
 
   const handleSliderLeftClick = () => {
-    refs.sliderScroller ? (refs.sliderScroller.scrollLeft -= slideWidth) : null;
+    sliderScrollerRef ? (sliderScrollerRef.scrollLeft -= slideWidth) : null;
   };
 
   const isBottom = el =>
@@ -275,7 +277,7 @@ function LandingContainer(props) {
     <div className="main">
       <section id="homeContainer" className="container">
         <div className="sliderContainer">
-          <div className="slider" ref="sliderScroller">
+          <div className="slider" ref={sliderScrollerRef}>
             {sliderItems.map((item, idx) => {
               let boundItemClick = handleBoundItemClick.bind(this, item);
               return (
@@ -310,7 +312,7 @@ function LandingContainer(props) {
           ></div>
         </div>
         <div className="sliderSubItemWrapper">
-          <div className="sliderSubItem" ref="subItemScroller">
+          <div className="sliderSubItem" ref={subItemScrollerRef}>
             <div className="subItemInnerWrapper">
               {subItems.map((subItem, idx) => {
                 let boundSubitemClick = handleBoundSubitemClick.bind(

@@ -232,7 +232,7 @@ function Navbar(props) {
         <span className="test"></span>
         <a
           className="portfolioLink"
-          href="https://www.builtbybixby.us"
+          href="https://intense-spire-62825.herokuapp.com"
           rel="noopener noreferrer"
           target="_blank"
           title="BuiltByBixby.us"
