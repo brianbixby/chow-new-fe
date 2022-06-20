@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Avatar = props => (
+const Avatar = ({ url }) => (
   <div className="avatar">
-    <img src={props.url} />
+    <img src={url} alt="user avatar" />
   </div>
 );
 

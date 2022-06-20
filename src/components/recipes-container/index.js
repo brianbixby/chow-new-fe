@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import Footer from '../footer';
 import { tokenSignInRequest } from '../../actions/userAuth-actions.js';
@@ -22,7 +23,8 @@ import {
   classToggler,
 } from './../../lib/util.js';
 
-class RecipesContainer extends React.Component {
+function RecipesContainer(props) {
+    let navigate = useNavigate();
   constructor(props) {
     super(props);
     this.state = { userSuccess: false, userSuccessMessage: '' };
@@ -71,7 +73,7 @@ class RecipesContainer extends React.Component {
   handleBoundRecipeClick = (myRecipe, e) => {
     this.props.recipeFetchRequest(myRecipe.recipe);
     let uri = myRecipe.recipe.uri.split('recipe_')[1];
-    return this.props.history.push(`/recipe/${uri}`);
+    return navigate(`/recipe/${uri}`);
   };
 
   handleBoundFavoriteClick = (favorite, e) => {
@@ -192,6 +194,7 @@ class RecipesContainer extends React.Component {
                             <img
                               className="cardImage"
                               src={myRecipe.recipe.image}
+                              alt={recipe.label}
                             />
                           </div>
                           <div
@@ -298,14 +301,13 @@ class RecipesContainer extends React.Component {
   }
 }
 
-let mapStateToProps = state => ({
+const mapStateToProps = state => ({
   recipes: state.recipes,
   userAuth: state.userAuth,
   favorites: state.favorites,
 });
 
-let mapDispatchToProps = dispatch => {
-  return {
+const mapDispatchToProps = dispatch => ({
     favoritesFetch: favoritesArr =>
       dispatch(favoritesFetchRequest(favoritesArr)),
     favoriteFetch: favorite => dispatch(favoriteFetchRequest(favorite)),
@@ -320,7 +322,6 @@ let mapDispatchToProps = dispatch => {
     recipeFetchRequest: recipe => dispatch(recipeFetch(recipe)),
     infiniteRecipesFetchRequest: recipes =>
       dispatch(infiniteRecipesFetch(recipes)),
-  };
-};
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipesContainer);

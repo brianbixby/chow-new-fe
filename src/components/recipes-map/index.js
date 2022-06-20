@@ -102,7 +102,11 @@ class RecipesMap extends React.Component {
                     onClick={boundRecipeClick}
                     title={myRecipe.recipe.label}
                   >
-                    <img className="cardImage" src={myRecipe.recipe.image} />
+                    <img
+                      className="cardImage"
+                      src={myRecipe.recipe.image}
+                      alt={myRecipe.recipe.label}
+                    />
                   </div>
                   <div
                     title={
@@ -181,17 +185,15 @@ class RecipesMap extends React.Component {
   }
 }
 
-let mapStateToProps = state => ({
+const mapStateToProps = state => ({
   userAuth: state.userAuth,
   favorites: state.favorites,
 });
 
-let mapDispatchToProps = dispatch => {
-  return {
-    favoriteFetch: favorite => dispatch(favoriteFetchRequest(favorite)),
-    recipeFetchRequest: recipe => dispatch(recipeFetch(recipe)),
-    favoriteDelete: favorite => dispatch(favoriteDeleteRequest(favorite)),
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  favoriteFetch: favorite => dispatch(favoriteFetchRequest(favorite)),
+  recipeFetchRequest: recipe => dispatch(recipeFetch(recipe)),
+  favoriteDelete: favorite => dispatch(favoriteDeleteRequest(favorite)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipesMap);

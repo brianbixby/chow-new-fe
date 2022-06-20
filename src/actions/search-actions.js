@@ -25,8 +25,8 @@ export const recipesFetchRequest =
     const max = (parseInt(min) + 24).toString();
     let url =
       min === 0 || min === 49
-        ? `https://api.edamam.com/${queryString}${process.env.REACT_APP_API_KEY}&from=${min}&to=${max}${queryParams}`
-        : `https://api.edamam.com/${queryString}${process.env.REACT_APP_API_KEY2}&from=${min}&to=${max}${queryParams}`;
+        ? `https://api.edamam.com/${queryString}${process.env.REACT_APP_RECIPE_SEARCH_API_KEY}&from=${min}&to=${max}${queryParams}`
+        : `https://api.edamam.com/${queryString}${process.env.REACT_APP_RECIPE_SEARCH_API_KEY2}&from=${min}&to=${max}${queryParams}`;
 
     return superagent.get(url).then(res => {
       localStorage.setItem(
@@ -45,7 +45,7 @@ export const recipesFetchRequest =
 
 export const homepageFetchRequest = min => dispatch => {
   const max = (parseInt(min) + 24).toString();
-  let url = `https://api.edamam.com/search?q=summer${process.env.REACT_APP_API_KEY3}&from=${min}&to=${max}&calories=0-10000`;
+  let url = `https://api.edamam.com/search?q=summer${process.env.REACT_APP_RECIPE_SEARCH_API_KEY3}&from=${min}&to=${max}&calories=0-10000`;
 
   return superagent.get(url).then(res => {
     localStorage.setItem(
@@ -62,7 +62,7 @@ export const homepageFetchRequest = min => dispatch => {
 
 export const recipeFetchRequest = recipeURI => dispatch => {
   let qString = `r=http%3A%2F%2Fwww.edamam.com%2Fontologies%2Fedamam.owl%23recipe_${recipeURI}`;
-  let url = `https://api.edamam.com/search?${qString}${process.env.REACT_APP_API_KEY4}`;
+  let url = `https://api.edamam.com/search?${qString}${process.env.REACT_APP_RECIPE_SEARCH_API_KEY4}`;
 
   return superagent.get(url).then(res => {
     if (!res.body.length) return null;
