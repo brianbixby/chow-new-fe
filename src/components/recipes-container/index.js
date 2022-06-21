@@ -103,13 +103,14 @@ function RecipesContainer(props) {
   const trackScrolling = () => {
     document.removeEventListener('scroll', trackScrolling);
     const wrappedElement = document.getElementById('recipesWrapper');
+    let string = window.location.href.split('/search/')[1];
     if (
       isBottom(wrappedElement) &&
       props.recipes &&
       props.recipes.hits &&
-      props.recipes.hits.length < 96
+      props.recipes.hits.length < 96 &&
+      string
     ) {
-      let string = window.location.href.split('/search/')[1];
       let hashIndex = string.indexOf('&');
       let queryString = string.substring(0, hashIndex);
       let queryParams = string.substring(hashIndex, string.length);
