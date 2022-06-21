@@ -91,9 +91,9 @@ function Navbar(props) {
     navigate(`/profile/${props.userProfile.username}`);
   };
 
-  const handleboundCatClick = item => {
-    let queryString = item.link.split('&calories=0-10000')[0];
-    let queryParams = item.link.split(queryString)[1];
+  const categoryClick = itemLink => {
+    let queryString = itemLink.split('&calories=0-10000')[0];
+    let queryParams = itemLink.split(queryString)[1];
 
     if (
       localStorage.getItem(`${queryString}${queryParams}0`) &&
@@ -273,12 +273,11 @@ function Navbar(props) {
                         <span className="iconRight"></span>
                         <ul className="browseSubCategories">
                           {cat.subCategory.map((sub, subindex) => {
-                            let boundCatClick = handleboundCatClick.bind(
-                              this,
-                              sub
-                            );
                             return (
-                              <li key={subindex} onClick={boundCatClick}>
+                              <li
+                                key={subindex}
+                                onClick={() => categoryClick(sub.link)}
+                              >
                                 <p>{sub.title}</p>
                               </li>
                             );

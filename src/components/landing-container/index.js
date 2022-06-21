@@ -38,35 +38,41 @@ function LandingContainer(props) {
   const sliderScrollerRef = React.useRef(null);
   const homeContainerRef = React.useRef(null);
   const [slideWidth, setSlideWidth] = useState(270);
+  const [fetchCount, setFetchCount] = useState(24);
+  let flag = 0;
 
   useEffect(() => {
     userValidation(props, navigate);
-    if (
-      localStorage.random0 &&
-      JSON.parse(localStorage.getItem('random0'))['timestamp'] >
-        new Date().getTime()
-    ) {
-      props.homepageFetchRequest(
-        JSON.parse(localStorage.getItem('random0'))['content']
-      );
-    } else if (!props.homepage || props.homepage.length == 0) {
-      props.homepageFetch(0).catch(err => logError(err));
+    if (!flag) {
+      flag++;
+      if (
+        localStorage.random0 &&
+        JSON.parse(localStorage.getItem('random0'))['timestamp'] >
+          new Date().getTime()
+      ) {
+        props.homepageFetchRequest(
+          JSON.parse(localStorage.getItem('random0'))['content']
+        );
+      } else if (!props.homepage || props.homepage.length == 0) {
+        props.homepageFetch(0).catch(err => logError(err));
+      }
+      if (!props.log) {
+        props.loggedRequest(true);
+        console.log(
+          'If you have any questions about my code please email me @BrianBixby0@gmail.com and visit https://www.builtbybixby.us to see my latest projects.'
+        );
+      }
     }
     updateSlideWidth();
-    window.scrollTo(0, 0);
+  }, []);
+  useEffect(() => {
     window.addEventListener('resize', updateSlideWidth);
     document.addEventListener('scroll', trackScrolling);
-    if (!props.log) {
-      props.loggedRequest(true);
-      console.log(
-        'If you have any questions about my code please email me @BrianBixby0@gmail.com and visit https://www.builtbybixby.us to see my latest projects.'
-      );
-    }
     return function cleanup() {
       window.removeEventListener('resize', updateSlideWidth);
       document.removeEventListener('scroll', trackScrolling);
     };
-  }, []);
+  }, [fetchCount]);
 
   const updateSlideWidth = () => {
     if (window.innerWidth < 480) {
@@ -82,58 +88,25 @@ function LandingContainer(props) {
     }
   };
 
-  const handleBoundItemClick = item => {
-    let queryString = item.link.split('&calories=0-10000')[0];
-    let queryParams = '&calories=0-10000';
-
-    if (
-      localStorage.getItem(`${queryString}${queryParams}0`) &&
-      JSON.parse(localStorage.getItem(`${queryString}${queryParams}0`))[
-        'timestamp'
-      ] > new Date().getTime()
-    ) {
-      props.recipesFetchRequest(
-        JSON.parse(localStorage.getItem(`${queryString}${queryParams}0`))[
-          'content'
-        ]
-      );
-      return navigate(`/search/${queryString}${queryParams}`);
-    }
+  const itemClick = itemLink => {
+    const queryString = itemLink.split('&calories=0-10000')[0];
+    const queryParams = '&calories=0-10000';
     return props
       .recipesFetch(queryString, queryParams, 0, false)
       .then(() => navigate(`/search/${queryString}${queryParams}`))
       .catch(err => logError(err));
   };
 
-  const handleBoundSubitemClick = subItem => {
-    let queryString = subItem.link.split('&calories=0-10000')[0];
-    let queryParams = '&calories=0-10000';
-
-    if (
-      localStorage.getItem(`${queryString}${queryParams}0`) &&
-      JSON.parse(localStorage.getItem(`${queryString}${queryParams}0`))[
-        'timestamp'
-      ] > new Date().getTime()
-    ) {
-      props.recipesFetchRequest(
-        JSON.parse(localStorage.getItem(`${queryString}${queryParams}0`))[
-          'content'
-        ]
-      );
-      return navigate(`/search/${queryString}${queryParams}`);
-    }
-
-    let min = 0;
-    let infiniteSearch = false;
+  const subitemClick = subItemLink => {
+    const queryString = subItemLink.split('&calories=0-10000')[0];
+    const queryParams = '&calories=0-10000';
     return props
-      .recipesFetch(queryString, queryParams, min, infiniteSearch)
+      .recipesFetch(queryString, queryParams, 0, false)
       .then(() => navigate(`/search/${queryString}${queryParams}`))
       .catch(err => logError(err));
   };
 
   const handleRedirect = url => navigate(url);
-
-  //   const calsPS = (cals, servings) => Math.round(cals / servings);
 
   const handleRightClick = () => {
     subItemScrollerRef
@@ -171,24 +144,30 @@ function LandingContainer(props) {
       props.homepage &&
       props.homepage.length < 96
     ) {
-      let min = props.homepage.length.toString();
+      let min = fetchCount.toString();
       if (
         localStorage.getItem(`random${min}`) &&
         JSON.parse(localStorage.getItem(`random${min}`))['timestamp'] >
           new Date().getTime()
       ) {
+        console.log('local storage');
         props.homepageFetchRequest(
           JSON.parse(localStorage.getItem(`random${min}`))['content']
         );
+        setFetchCount(fetchCount + 24);
         return document.addEventListener('scroll', trackScrolling);
       } else {
         return props
           .homepageFetch(min)
-          .then(() => document.addEventListener('scroll', trackScrolling))
+          .then(() => {
+            document.addEventListener('scroll', trackScrolling);
+            setFetchCount(fetchCount + 24);
+          })
           .catch(err => logError(err));
       }
+    } else {
+      document.addEventListener('scroll', trackScrolling);
     }
-    document.addEventListener('scroll', trackScrolling);
   };
 
   const sliderItems = [
@@ -283,12 +262,11 @@ function LandingContainer(props) {
         <div className="sliderContainer">
           <div className="slider" ref={sliderScrollerRef}>
             {sliderItems.map((item, idx) => {
-              let boundItemClick = handleBoundItemClick.bind(this, item);
               return (
                 <div
                   key={idx}
                   className="sliderItemContainer"
-                  onClick={boundItemClick}
+                  onClick={() => itemClick(item.link)}
                   title={item.header}
                 >
                   <div className="sliderText">
@@ -319,15 +297,11 @@ function LandingContainer(props) {
           <div className="sliderSubItem" ref={subItemScrollerRef}>
             <div className="subItemInnerWrapper">
               {subItems.map((subItem, idx) => {
-                let boundSubitemClick = handleBoundSubitemClick.bind(
-                  this,
-                  subItem
-                );
                 return (
                   <div
                     key={idx}
                     className="sliderSubitemContainer"
-                    onClick={boundSubitemClick}
+                    onClick={() => subitemClick(subItem.link)}
                     title={subItem.title}
                   >
                     <div className="subItemInsideWrapper">

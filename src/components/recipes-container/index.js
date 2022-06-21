@@ -28,38 +28,45 @@ function RecipesContainer(props) {
   const recipesWrapperRef = React.useRef(null);
   const [userSuccess, setUserSuccess] = useState(false);
   const [userSuccessMessage, setUserSuccessMessage] = useState('');
+  const [fetchCount, setFetchCount] = useState(24);
+  let flag = 0;
 
   useEffect(() => {
     userValidation(props, navigate);
-    if (!props.recipes || !props.recipes.hits || !props.recipes.hits.length) {
-      let string = window.location.href.split('/search/')[1];
-      let hashIndex = string.indexOf('&');
-      let queryString = string.substring(0, hashIndex);
-      let queryParams = string.substring(hashIndex, string.length);
-      if (
-        localStorage.getItem(`${queryString}${queryParams}0`) &&
-        JSON.parse(localStorage.getItem(`${queryString}${queryParams}0`))[
-          'timestamp'
-        ] > new Date().getTime()
-      ) {
-        props.recipesFetchRequest(
+    if (!flag) {
+      flag++;
+      if (!props.recipes || !props.recipes.hits || !props.recipes.hits.length) {
+        let string = window.location.href.split('/search/')[1];
+        let hashIndex = string.indexOf('&');
+        let queryString = string.substring(0, hashIndex);
+        let queryParams = string.substring(hashIndex, string.length);
+        if (
+          localStorage.getItem(`${queryString}${queryParams}0`) &&
           JSON.parse(localStorage.getItem(`${queryString}${queryParams}0`))[
-            'content'
-          ]
-        );
-      } else {
-        props
-          .recipesFetch(queryString, queryParams, 0, false)
-          .catch(err => logError(err));
+            'timestamp'
+          ] > new Date().getTime()
+        ) {
+          props.recipesFetchRequest(
+            JSON.parse(localStorage.getItem(`${queryString}${queryParams}0`))[
+              'content'
+            ]
+          );
+        } else {
+          props
+            .recipesFetch(queryString, queryParams, 0, false)
+            .catch(err => logError(err));
+        }
       }
     }
-    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     document.addEventListener('scroll', trackScrolling);
     return function cleanup() {
       setUserSuccess(false);
       document.removeEventListener('scroll', trackScrolling);
     };
-  }, []);
+  }, [fetchCount]);
 
   const handleBoundRecipeClick = myRecipe => {
     props.recipeFetchRequest(myRecipe.recipe);
@@ -114,7 +121,7 @@ function RecipesContainer(props) {
       let hashIndex = string.indexOf('&');
       let queryString = string.substring(0, hashIndex);
       let queryParams = string.substring(hashIndex, string.length);
-      let min = props.recipes.hits.length.toString();
+      let min = fetchCount.toString();
       if (
         localStorage.getItem(`${queryString}${queryParams}${min}`) &&
         JSON.parse(localStorage.getItem(`${queryString}${queryParams}${min}`))[
@@ -126,16 +133,21 @@ function RecipesContainer(props) {
             localStorage.getItem(`${queryString}${queryParams}${min}`)
           )['content']
         );
+        setFetchCount(fetchCount + 24);
         return document.addEventListener('scroll', trackScrolling);
       } else {
         const infiniteSearch = true;
         return props
           .recipesFetch(queryString, queryParams, min, infiniteSearch)
-          .then(() => document.addEventListener('scroll', trackScrolling))
+          .then(() => {
+            document.addEventListener('scroll', trackScrolling);
+            setFetchCount(fetchCount + 24);
+          })
           .catch(err => logError(err));
       }
+    } else {
+      document.addEventListener('scroll', trackScrolling);
     }
-    document.addEventListener('scroll', trackScrolling);
   };
 
   let { recipes } = props;
