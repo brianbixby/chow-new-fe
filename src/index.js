@@ -8,7 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './components/app';
 import appCreateStore from './lib/app-create-store.js';
 
-import reportWebVitals from './reportWebVitals';
+// import reportWebVitals from './reportWebVitals';
 
 const rootEl = document.getElementById('root');
 const root = createRoot(rootEl);
