@@ -150,7 +150,6 @@ function LandingContainer(props) {
         JSON.parse(localStorage.getItem(`random${min}`))['timestamp'] >
           new Date().getTime()
       ) {
-        console.log('local storage');
         props.homepageFetchRequest(
           JSON.parse(localStorage.getItem(`random${min}`))['content']
         );

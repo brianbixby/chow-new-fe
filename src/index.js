@@ -28,5 +28,5 @@ let AppContainer = () => {
 
 root.render(<AppContainer />);
 
-reportWebVitals(console.log);
+// reportWebVitals(console.log);
 // https://bit.ly/CRA-vitals
