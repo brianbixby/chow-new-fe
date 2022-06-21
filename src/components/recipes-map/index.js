@@ -55,12 +55,14 @@ class RecipesMap extends React.Component {
 
   handleUpClick = () => {
     this.asideRef
-      ? this.asideRef.scrollBy(0, -1 * (window.innerHeight - 132))
+      ? this.asideRef.current.scrollBy(0, -1 * (window.innerHeight - 132))
       : null;
   };
 
   handleDownClick = () => {
-    this.asideRef ? this.asideRef.scrollBy(0, window.innerHeight - 132) : null;
+    this.asideRef
+      ? this.asideRef.current.scrollBy(0, window.innerHeight - 132)
+      : null;
   };
 
   render() {

@@ -21,8 +21,8 @@ class SearchBar extends React.Component {
       maxCalsError: null,
       maxIngredients: '',
       maxIngredientsError: null,
-      dietOption: '',
-      healthOption: '',
+      dietOption: false,
+      healthOption: false,
       error: null,
       focused: null,
       submitted: false,
@@ -46,8 +46,8 @@ class SearchBar extends React.Component {
       minCals: '',
       maxCals: '',
       maxIngredients: '',
-      dietOption: '',
-      healthOption: '',
+      dietOption: false,
+      healthOption: false,
     });
   }
 
@@ -351,7 +351,7 @@ class SearchBar extends React.Component {
                     type="radio"
                     name="healthOption"
                     value="peanut-free"
-                    onClick={this.handleRadioClick}
+                    onChange={this.handleRadioClick}
                     onFocus={this.handleFocus}
                     onBlur={this.handleBlur}
                     checked={this.state.healthOption === 'peanut-free'}
@@ -363,7 +363,7 @@ class SearchBar extends React.Component {
                     type="radio"
                     name="healthOption"
                     value="sugar-conscious"
-                    onClick={this.handleRadioClick}
+                    onChange={this.handleRadioClick}
                     onFocus={this.handleFocus}
                     onBlur={this.handleBlur}
                     checked={this.state.healthOption === 'sugar-conscious'}
@@ -375,7 +375,7 @@ class SearchBar extends React.Component {
                     type="radio"
                     name="healthOption"
                     value="tree-nut-free"
-                    onClick={this.handleRadioClick}
+                    onChange={this.handleRadioClick}
                     onFocus={this.handleFocus}
                     onBlur={this.handleBlur}
                     checked={this.state.healthOption === 'tree-nut-free'}
@@ -387,7 +387,7 @@ class SearchBar extends React.Component {
                     type="radio"
                     name="healthOption"
                     value="vegan"
-                    onClick={this.handleRadioClick}
+                    onChange={this.handleRadioClick}
                     onFocus={this.handleFocus}
                     onBlur={this.handleBlur}
                     checked={this.state.healthOption === 'vegan'}
@@ -399,7 +399,7 @@ class SearchBar extends React.Component {
                     type="radio"
                     name="healthOption"
                     value="vegetarian"
-                    onClick={this.handleRadioClick}
+                    onChange={this.handleRadioClick}
                     onFocus={this.handleFocus}
                     onBlur={this.handleBlur}
                     checked={this.state.healthOption === 'vegetarian'}
@@ -417,7 +417,7 @@ class SearchBar extends React.Component {
                       type="radio"
                       name="dietOption"
                       value="balanced"
-                      onClick={this.handleRadioClick}
+                      onChange={this.handleRadioClick}
                       onFocus={this.handleFocus}
                       onBlur={this.handleBlur}
                       checked={this.state.dietOption === 'balanced'}
@@ -429,7 +429,7 @@ class SearchBar extends React.Component {
                       type="radio"
                       name="dietOption"
                       value="high-protein"
-                      onClick={this.handleRadioClick}
+                      onChange={this.handleRadioClick}
                       onFocus={this.handleFocus}
                       onBlur={this.handleBlur}
                       checked={this.state.dietOption === 'high-protein'}
@@ -441,7 +441,7 @@ class SearchBar extends React.Component {
                       type="radio"
                       name="dietOption"
                       value="low-carb"
-                      onClick={this.handleRadioClick}
+                      onChange={this.handleRadioClick}
                       onFocus={this.handleFocus}
                       onBlur={this.handleBlur}
                       checked={this.state.dietOption === 'low-carb'}

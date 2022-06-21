@@ -26,6 +26,7 @@ import serving from './../helpers/assets/icons/serving.icon.svg';
 
 function RecipeContainer(props) {
   let navigate = useNavigate();
+  let recipePageWrapperRef = React.createRef();
   const [userSuccess, setUserSuccess] = useState(false);
   const [recipeError, setRecipeError] = useState(false);
   const [userSuccessMessage, setUserSuccessMessage] = useState('');
@@ -63,17 +64,13 @@ function RecipeContainer(props) {
     }
     window.scrollTo(0, 0);
     document.addEventListener('scroll', trackScrolling);
+    return function cleanup() {
+      setUserSuccess(false);
+      setRecipeError(false);
+      setPageBottom(false);
+      document.removeEventListener('scroll', trackScrolling);
+    };
   }, []);
-
-  //   to do
-  //   componentWillUnmount() {
-  //     setState({
-  //       userSuccess: false,
-  //       recipeError: false,
-  //       pageBottom: false,
-  //     });
-  //     document.removeEventListener('scroll', trackScrolling);
-  //   }
 
   const handleBoundFavoriteClick = () => {
     if (props.userAuth) {
@@ -136,6 +133,7 @@ function RecipeContainer(props) {
         main: true,
         pageBottom: pageBottom,
       })}
+      ref={recipePageWrapperRef}
     >
       <div>
         {recipe && (

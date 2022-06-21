@@ -34,8 +34,9 @@ import './../../style/main.scss';
 
 function LandingContainer(props) {
   let navigate = useNavigate();
-  let subItemScrollerRef = React.createRef();
-  let sliderScrollerRef = React.createRef();
+  const subItemScrollerRef = React.useRef(null);
+  const sliderScrollerRef = React.useRef(null);
+  const homeContainerRef = React.useRef(null);
   const [slideWidth, setSlideWidth] = useState(270);
 
   useEffect(() => {
@@ -61,12 +62,11 @@ function LandingContainer(props) {
         'If you have any questions about my code please email me @BrianBixby0@gmail.com and visit https://www.builtbybixby.us to see my latest projects.'
       );
     }
+    return function cleanup() {
+      window.removeEventListener('resize', updateSlideWidth);
+      document.removeEventListener('scroll', trackScrolling);
+    };
   }, []);
-
-  //   componentWillUnmount() {
-  //     window.removeEventListener('resize', updateSlideWidth);
-  //     document.removeEventListener('scroll', trackScrolling);
-  //   }
 
   const updateSlideWidth = () => {
     if (window.innerWidth < 480) {
@@ -137,26 +137,30 @@ function LandingContainer(props) {
 
   const handleRightClick = () => {
     subItemScrollerRef
-      ? (subItemScrollerRef.scrollLeft += window.innerWidth)
+      ? (subItemScrollerRef.current.scrollLeft += window.innerWidth)
       : null;
   };
 
   const handleLeftClick = () => {
     subItemScrollerRef
-      ? (subItemScrollerRef.scrollLeft -= window.innerWidth)
+      ? (subItemScrollerRef.current.scrollLeft -= window.innerWidth)
       : null;
   };
 
   const handleSliderRightClick = () => {
-    sliderScrollerRef ? (sliderScrollerRef.scrollLeft += slideWidth) : null;
+    sliderScrollerRef
+      ? (sliderScrollerRef.current.scrollLeft += slideWidth)
+      : null;
   };
 
   const handleSliderLeftClick = () => {
-    sliderScrollerRef ? (sliderScrollerRef.scrollLeft -= slideWidth) : null;
+    sliderScrollerRef
+      ? (sliderScrollerRef.current.scrollLeft -= slideWidth)
+      : null;
   };
 
   const isBottom = el =>
-    el.getBoundingClientRect().bottom <= window.innerHeight + 1500;
+    el && el.getBoundingClientRect().bottom <= window.innerHeight + 1500;
 
   const trackScrolling = () => {
     document.removeEventListener('scroll', trackScrolling);
@@ -275,7 +279,7 @@ function LandingContainer(props) {
   ];
   return (
     <div className="main">
-      <section id="homeContainer" className="container">
+      <section id="homeContainer" className="container" ref={homeContainerRef}>
         <div className="sliderContainer">
           <div className="slider" ref={sliderScrollerRef}>
             {sliderItems.map((item, idx) => {

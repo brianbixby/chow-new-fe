@@ -25,6 +25,7 @@ import {
 
 function RecipesContainer(props) {
   let navigate = useNavigate();
+  const recipesWrapperRef = React.useRef(null);
   const [userSuccess, setUserSuccess] = useState(false);
   const [userSuccessMessage, setUserSuccessMessage] = useState('');
 
@@ -54,12 +55,11 @@ function RecipesContainer(props) {
     }
     window.scrollTo(0, 0);
     document.addEventListener('scroll', trackScrolling);
+    return function cleanup() {
+      setUserSuccess(false);
+      document.removeEventListener('scroll', trackScrolling);
+    };
   }, []);
-
-  //   componentWillUnmount() {
-  //     setState({ userSuccess: false });
-  //     document.removeEventListener('scroll', trackScrolling);
-  //   }
 
   const handleBoundRecipeClick = myRecipe => {
     props.recipeFetchRequest(myRecipe.recipe);
@@ -98,7 +98,7 @@ function RecipesContainer(props) {
   const calsPS = (cals, servings) => Math.round(cals / servings);
 
   const isBottom = el =>
-    el.getBoundingClientRect().bottom <= window.innerHeight + 1500;
+    el && el.getBoundingClientRect().bottom <= window.innerHeight + 1500;
 
   const trackScrolling = () => {
     document.removeEventListener('scroll', trackScrolling);
@@ -140,7 +140,11 @@ function RecipesContainer(props) {
   let { recipes } = props;
   return (
     <div className="main">
-      <div id="recipesWrapper" className="container-fluid">
+      <div
+        ref={recipesWrapperRef}
+        id="recipesWrapper"
+        className="container-fluid"
+      >
         {renderIf(
           !recipes,
           <div className="resultCountDiv">
