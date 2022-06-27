@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, lazy } from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import Footer from '../footer';
+const Footer = lazy(() => import('../footer'));
 import UserProfileForm from '../userProfile-form';
 import { tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import {
@@ -91,8 +91,8 @@ function ProfileContainer(props) {
               <div className="inner-wrapper">
                 <div className="profile-image-div">
                   <img
-                    className="profile-image"
-                    src={profileImage}
+                    className="lazyload profile-image"
+                    data-src={profileImage}
                     alt="User profile"
                   />
                   <p className="mainContainerHeader">{userProfile.username}</p>
@@ -155,8 +155,8 @@ function ProfileContainer(props) {
                         title={fav.label}
                       >
                         <img
-                          className="cardImage"
-                          src={fav.image}
+                          className="lazyload cardImage"
+                          data-src={fav.image}
                           alt={fav.label}
                         />
                       </div>

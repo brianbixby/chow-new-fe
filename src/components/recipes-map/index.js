@@ -104,8 +104,8 @@ class RecipesMap extends React.Component {
                     title={myRecipe.recipe.label}
                   >
                     <img
-                      className="cardImage"
-                      src={myRecipe.recipe.image}
+                      className="lazyload cardImage"
+                      data-src={myRecipe.recipe.image}
                       alt={myRecipe.recipe.label}
                     />
                   </div>

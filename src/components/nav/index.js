@@ -192,7 +192,11 @@ function Navbar(props) {
     props.userProfile && props.userProfile.image ? (
       <Avatar url={props.userProfile.image} />
     ) : (
-      <img className="noProfileImageNav" src={user} alt="user profile" />
+      <img
+        className="lazyload noProfileImageNav"
+        data-src={user}
+        alt="user profile"
+      />
     );
   let profileText =
     props.userAuth && props.userProfile && props.userProfile.username
@@ -247,7 +251,11 @@ function Navbar(props) {
           <Link to="/" className="homeLink">
             chow{' '}
             <span className="spoonContainer">
-              <img src={spoon} className="spoon" alt="spoon logo" />
+              <img
+                data-src={spoon}
+                className="lazyload spoon"
+                alt="spoon logo"
+              />
             </span>
           </Link>
         </div>
@@ -259,7 +267,8 @@ function Navbar(props) {
           }}
         >
           <p>
-            <span>BROWSE</span> <img src={chevron} alt="chevron icon" />
+            <span>BROWSE</span>{' '}
+            <img className="lazyload" data-src={chevron} alt="chevron icon" />
           </p>
         </div>
         {renderIf(

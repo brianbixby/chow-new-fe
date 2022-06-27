@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, lazy } from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import Footer from '../footer';
-import RecipesMap from '../recipes-map';
 import {
   homepageFetchRequest,
   homepageFetch,
@@ -15,6 +13,8 @@ import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 import { favoritesFetchRequest } from '../../actions/favorite-actions.js';
 import { logged } from '../../actions/log-actions.js';
 import { userValidation, logError, renderIf } from './../../lib/util.js';
+const Footer = lazy(() => import('../footer'));
+const RecipesMap = lazy(() => import('../recipes-map'));
 import image1 from './../helpers/assets/1.webp';
 import image2 from './../helpers/assets/2.webp';
 import image3 from './../helpers/assets/3.webp';
@@ -30,7 +30,6 @@ import image12 from './../helpers/assets/12.webp';
 import image13 from './../helpers/assets/13.webp';
 import image14 from './../helpers/assets/14.webp';
 import image15 from './../helpers/assets/15.webp';
-// import './../../style/main.scss';
 
 function LandingContainer(props) {
   let navigate = useNavigate();
@@ -278,8 +277,9 @@ function LandingContainer(props) {
                   </div>
                   <img
                     fetchpriority="high"
-                    src={item.image}
-                    className="sliderItemImage"
+                    fetchPriority="high"
+                    data-src={item.image}
+                    className="lazyload sliderItemImage"
                     alt={item.header}
                   />
                 </div>
@@ -311,9 +311,11 @@ function LandingContainer(props) {
                     <div className="subItemInsideWrapper">
                       <img
                         fetchpriority="high"
-                        src={subItem.image}
-                        className="sliderSubitemImage"
+                        fetchPriority="high"
+                        data-src={subItem.image}
+                        className="lazyload sliderSubitemImage"
                         alt={subItem.title}
+                        // style={{ height: '60px', width: '60px' }}
                       />
                       <p className="sliderSubitemTitle">{subItem.title}</p>
                     </div>

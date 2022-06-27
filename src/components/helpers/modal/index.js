@@ -13,7 +13,11 @@ function Modal(props) {
               {' '}
               {props.heading}{' '}
               <span className="spoonContainer">
-                <img src={spoon} className="spoon" alt="spoon logo" />
+                <img
+                  data-src={spoon}
+                  className="lazyload spoon"
+                  alt="spoon logo"
+                />
               </span>
             </p>
           </div>

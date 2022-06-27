@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, lazy } from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import Footer from '../footer';
-import RecipesMap from '../recipes-map';
 import { tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 import {
@@ -21,6 +19,8 @@ import {
   classToggler,
   userValidation,
 } from './../../lib/util.js';
+const RecipesMap = lazy(() => import('../recipes-map'));
+const Footer = lazy(() => import('../footer'));
 import cal from './../helpers/assets/icons/cal.icon.svg';
 import serving from './../helpers/assets/icons/serving.icon.svg';
 
@@ -153,8 +153,8 @@ function RecipeContainer(props) {
                     <div className="irImgContainerDisplaySmall">
                       <div className="irImgContainerInnerWrapper">
                         <img
-                          className="irImg"
-                          src={recipe.image}
+                          className="lazyload irImg"
+                          data-src={recipe.image}
                           alt={recipe.label}
                         />
                         <div
@@ -195,8 +195,8 @@ function RecipeContainer(props) {
                     </div>
                     <div className="irImgContainerDisplayLarge">
                       <img
-                        className="irImg"
-                        src={recipe.image}
+                        className="lazyload irImg"
+                        data-src={recipe.image}
                         alt={recipe.label}
                       />
                     </div>
@@ -251,8 +251,8 @@ function RecipeContainer(props) {
                             <span className="hideMobile">cals</span>
                           </span>
                           <img
-                            src={cal}
-                            className="iconScale"
+                            data-src={cal}
+                            className="lazyload iconScale"
                             alt="calories icon"
                           />
                         </span>
@@ -264,8 +264,8 @@ function RecipeContainer(props) {
                             <span className="hideMobile">servings</span>
                           </span>
                           <img
-                            src={serving}
-                            className="iconScale"
+                            data-src={serving}
+                            className="lazyload iconScale"
                             alt="serving icon"
                           />
                         </span>

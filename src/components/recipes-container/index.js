@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, lazy } from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import Footer from '../footer';
 import { tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import { userProfileFetchRequest } from '../../actions/userProfile-actions.js';
 import {
@@ -22,6 +21,7 @@ import {
   userValidation,
   classToggler,
 } from './../../lib/util.js';
+const Footer = lazy(() => import('../footer'));
 
 function RecipesContainer(props) {
   let navigate = useNavigate();
@@ -201,8 +201,8 @@ function RecipesContainer(props) {
                           title={myRecipe.recipe.label}
                         >
                           <img
-                            className="cardImage"
-                            src={myRecipe.recipe.image}
+                            className="lazyload cardImage"
+                            data-src={myRecipe.recipe.image}
                             alt={myRecipe.recipe.label}
                           />
                         </div>

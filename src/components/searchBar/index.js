@@ -229,7 +229,7 @@ class SearchBar extends React.Component {
               <p>Advanced Search</p>
             </div>
             <button type="submit" className="btn search-btn">
-              <img src={magnify} alt="Magnify icon" />
+              <img className="lazyload" data-src={magnify} alt="Magnify icon" />
             </button>
           </div>
           {renderIf(
