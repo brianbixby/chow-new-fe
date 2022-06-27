@@ -14,7 +14,6 @@ const rootEl = document.getElementById('root');
 const root = createRoot(rootEl);
 
 let AppContainer = () => {
-  // to do: remove strict mode before presentation
   return (
     <React.StrictMode>
       <Provider store={appCreateStore()}>

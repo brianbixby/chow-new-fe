@@ -30,7 +30,7 @@ import image12 from './../helpers/assets/12.webp';
 import image13 from './../helpers/assets/13.webp';
 import image14 from './../helpers/assets/14.webp';
 import image15 from './../helpers/assets/15.webp';
-import './../../style/main.scss';
+// import './../../style/main.scss';
 
 function LandingContainer(props) {
   let navigate = useNavigate();
@@ -277,6 +277,7 @@ function LandingContainer(props) {
                     <p className="sliderSubheader">{item.subHeader}</p>
                   </div>
                   <img
+                    fetchpriority="high"
                     src={item.image}
                     className="sliderItemImage"
                     alt={item.header}
@@ -309,6 +310,7 @@ function LandingContainer(props) {
                   >
                     <div className="subItemInsideWrapper">
                       <img
+                        fetchpriority="high"
                         src={subItem.image}
                         className="sliderSubitemImage"
                         alt={subItem.title}
