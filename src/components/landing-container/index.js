@@ -88,25 +88,29 @@ function LandingContainer(props) {
     }
   };
 
-  const itemClick = itemLink => {
-    const queryString = itemLink.split('&calories=0-10000')[0];
-    const queryParams = '&calories=0-10000';
-    return props
-      .recipesFetch(queryString, queryParams, 0, false)
-      .then(() => navigate(`/search/${queryString}${queryParams}`))
-      .catch(err => logError(err));
+  const itemClick = async itemLink => {
+    try {
+      const queryString = itemLink.split('&calories=0-10000')[0];
+      const queryParams = '&calories=0-10000';
+      await props.recipesFetch(queryString, queryParams, 0, false);
+      navigate(`/search/${queryString}${queryParams}`);
+    } catch (err) {
+      logError(err);
+    }
   };
 
-  const subitemClick = subItemLink => {
-    const queryString = subItemLink.split('&calories=0-10000')[0];
-    const queryParams = '&calories=0-10000';
-    return props
-      .recipesFetch(queryString, queryParams, 0, false)
-      .then(() => navigate(`/search/${queryString}${queryParams}`))
-      .catch(err => logError(err));
+  const subitemClick = async subItemLink => {
+    try {
+      const queryString = subItemLink.split('&calories=0-10000')[0];
+      const queryParams = '&calories=0-10000';
+      await props.recipesFetch(queryString, queryParams, 0, false);
+      navigate(`/search/${queryString}${queryParams}`);
+    } catch (err) {
+      logError(err);
+    }
   };
 
-  const handleRedirect = url => navigate(url);
+  const handleRedirect = async url => await navigate(url);
 
   const handleRightClick = () => {
     subItemScrollerRef

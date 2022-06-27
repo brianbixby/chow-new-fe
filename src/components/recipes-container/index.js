@@ -68,10 +68,14 @@ function RecipesContainer(props) {
     };
   }, [fetchCount]);
 
-  const handleBoundRecipeClick = myRecipe => {
-    props.recipeFetchRequest(myRecipe.recipe);
-    let uri = myRecipe.recipe.uri.split('recipe_')[1];
-    return navigate(`/recipe/${uri}`);
+  const handleBoundRecipeClick = async myRecipe => {
+    try {
+      props.recipeFetchRequest(myRecipe.recipe);
+      let uri = myRecipe.recipe.uri.split('recipe_')[1];
+      await navigate(`/recipe/${uri}`);
+    } catch (err) {
+      logError(err);
+    }
   };
 
   const handleBoundFavoriteClick = favorite => {

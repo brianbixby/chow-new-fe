@@ -32,10 +32,10 @@ function Navbar(props) {
   const [userSuccess, setUserSuccess] = useState(false);
   const [dropDownDisplay, setDropDownDisplay] = useState(false);
 
-  const handleSignOut = () => {
+  const handleSignOut = async () => {
     setDropDownDisplay(!dropDownDisplay);
     if (window.location.pathname == `/profile/${props.userProfile.username}`) {
-      navigate('/');
+      await navigate('/');
     }
     props.signOut();
     handleUserSuccess();
@@ -71,11 +71,13 @@ function Navbar(props) {
       });
   };
 
-  const handleSearch = (queryString, queryParams) => {
-    return props
-      .recipesFetch(queryString, queryParams, 0, false)
-      .then(() => navigate(`/search/${queryString}${queryParams}`))
-      .catch(err => logError(err));
+  const handleSearch = async (queryString, queryParams) => {
+    try {
+      await props.recipesFetch(queryString, queryParams, 0, false);
+      navigate(`/search/${queryString}${queryParams}`);
+    } catch (err) {
+      logError(err);
+    }
   };
 
   const handleProfileDivClick = () => {
@@ -86,37 +88,37 @@ function Navbar(props) {
       : setFormDisplay(true);
   };
 
-  const handleProfileLinkClick = () => {
+  const handleProfileLinkClick = async () => {
     setDropDownDisplay(false);
-    navigate(`/profile/${props.userProfile.username}`);
+    await navigate(`/profile/${props.userProfile.username}`);
   };
 
-  const categoryClick = itemLink => {
-    let queryString = itemLink.split('&calories=0-10000')[0];
-    let queryParams = itemLink.split(queryString)[1];
+  const categoryClick = async itemLink => {
+    try {
+      const queryString = itemLink.split('&calories=0-10000')[0];
+      const queryParams = itemLink.split(queryString)[1];
 
-    if (
-      localStorage.getItem(`${queryString}${queryParams}0`) &&
-      JSON.parse(localStorage.getItem(`${queryString}${queryParams}0`))[
-        'timestamp'
-      ] > new Date().getTime()
-    ) {
-      props.recipesFetchRequest(
+      if (
+        localStorage.getItem(`${queryString}${queryParams}0`) &&
         JSON.parse(localStorage.getItem(`${queryString}${queryParams}0`))[
-          'content'
-        ]
-      );
-      setShowBrowse(false);
-      return navigate(`/search/${queryString}${queryParams}`);
-    }
-
-    return props
-      .recipesFetch(queryString, queryParams, 0, false)
-      .then(() => {
+          'timestamp'
+        ] > new Date().getTime()
+      ) {
+        props.recipesFetchRequest(
+          JSON.parse(localStorage.getItem(`${queryString}${queryParams}0`))[
+            'content'
+          ]
+        );
         setShowBrowse(false);
         return navigate(`/search/${queryString}${queryParams}`);
-      })
-      .catch(err => logError(err));
+      }
+
+      await props.recipesFetch(queryString, queryParams, 0, false);
+      setShowBrowse(false);
+      return navigate(`/search/${queryString}${queryParams}`);
+    } catch (err) {
+      logError(err);
+    }
   };
 
   const handleUserSuccess = () => {
@@ -124,7 +126,7 @@ function Navbar(props) {
     setTimeout(() => setUserSuccess(false), 5000);
   };
 
-  const handleRedirect = url => navigate(url);
+  const handleRedirect = async url => await navigate(url);
 
   const categories = [
     {

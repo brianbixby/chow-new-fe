@@ -103,8 +103,8 @@ function RecipeContainer(props) {
   //   const calsPS = (cals, servings) => Math.round(cals / servings);
   //   const calsPD = (cals, servings) => (cals / servings / 20).toFixed(0);
 
-  const handleRedirect = url => {
-    navigate(url);
+  const handleRedirect = async url => {
+    await navigate(url);
     return window.scrollTo(0, 0);
   };
 

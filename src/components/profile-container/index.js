@@ -48,10 +48,14 @@ function ProfileContainer(props) {
       .catch(err => logError(err));
   };
 
-  const handleBoundRecipeClick = favorite => {
-    props.recipeFetchRequest(favorite);
-    let uri = favorite.uri.split('#recipe_')[1];
-    return navigate(`/recipe/${uri}`);
+  const handleBoundRecipeClick = async favorite => {
+    try {
+      props.recipeFetchRequest(favorite);
+      let uri = favorite.uri.split('#recipe_')[1];
+      await navigate(`/recipe/${uri}`);
+    } catch (err) {
+      logError(err);
+    }
   };
 
   const handleboundDeleteFavoriteClick = favorite => {
