@@ -21,7 +21,7 @@ import {
   renderIf,
   classToggler,
 } from './../../lib/util.js';
-import profilePlaceholderImg from './../helpers/assets/icons/profilePlaceholder.png';
+import profilePlaceholderImg from './../helpers/assets/icons/profilePlaceholder.webp';
 
 function ProfileContainer(props) {
   let navigate = useNavigate();
