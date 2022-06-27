@@ -235,7 +235,7 @@ function Navbar(props) {
           href="https://intense-spire-62825.herokuapp.com"
           rel="noopener noreferrer"
           target="_blank"
-          title="BuiltByBixby.us"
+          title="builtbybixby.com"
         >
           Check out my portfolio
         </a>

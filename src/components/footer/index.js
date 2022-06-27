@@ -30,10 +30,10 @@ function Footer() {
         </div>
         <a
           className="creator"
-          href="https://intense-spire-62825.herokuapp.com/"
+          href="https://www.builtbybixby.com/"
           rel="noopener noreferrer"
           target="_blank"
-          title="BuiltByBixby.us"
+          title="builtbybixby.com"
         >
           Built by Bixby
         </a>
