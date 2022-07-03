@@ -6,6 +6,7 @@ const LandingContainer = lazy(() => import('../landing-container'));
 const RecipesContainer = lazy(() => import('../recipes-container'));
 const RecipeContainer = lazy(() => import('../recipe-container'));
 const ProfileContainer = lazy(() => import('../profile-container'));
+const NotFound = lazy(() => import('../notFound'));
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/profile/:userName" element={<ProfileContainer />} />
           <Route path="/search/:searchQuery" element={<RecipesContainer />} />
           <Route path="/recipe/:recipeQuery" element={<RecipeContainer />} />
+          <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </Suspense>
     </div>

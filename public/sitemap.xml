@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Created using XmlSitemapGenerator.org - Free HTML, RSS and XML sitemap generator-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <url>
+    <loc>https://aqueous-refuge-82485.herokuapp.com</loc>
+    <lastmod>2022-07-03T05:01:20+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://aqueous-refuge-82485.herokuapp.com/search/search?q=slow%20cooker&calories=0-10000</loc>
+    <lastmod>2022-07-03T05:01:20+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://aqueous-refuge-82485.herokuapp.com/recipe/f97a5fe8f5af7d00b24dcb336cbf71d5</loc>
+    <lastmod>2022-07-03T05:02:20+03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://aqueous-refuge-82485.herokuapp.com/profile/eafewfewf</loc>
+    <lastmod>2022-07-03T05:02:20+03:00</lastmod>
+  </url>
+</urlset>
+<!--Created using XmlSitemapGenerator.org - Free HTML, RSS and XML sitemap generator-->

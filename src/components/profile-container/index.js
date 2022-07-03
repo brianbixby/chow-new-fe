@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const Footer = lazy(() => import('../footer'));
-import UserProfileForm from '../userProfile-form';
+const UserProfileForm = lazy(() => import('../userProfile-form'));
 import { tokenSignInRequest } from '../../actions/userAuth-actions.js';
 import {
   userProfileFetchRequest,
